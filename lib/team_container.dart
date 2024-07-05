@@ -3,6 +3,8 @@
 import 'package:canasta/team.dart';
 import 'package:flutter/material.dart';
 
+import 'checkbox_container.dart';
+
 class TeamContainer extends StatefulWidget {
   const TeamContainer({super.key, required this.team});
   final Team team;
@@ -99,66 +101,28 @@ class TeamContainerState extends State<TeamContainer> {
               ],
             ),
           ),
-          Container(
-            height: containerHeight,
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-            decoration: BoxDecoration(
-                color: preferedColor,
-                border: Border.all(),
-                borderRadius: const BorderRadius.all(Radius.circular(15))),
-            child: Row(
-              children: [
-                Padding(
-                  padding: insets,
-                  child: const Text("51/52 cards?",
-                      style: TextStyle(fontSize: 16)),
-                ),
-                Checkbox(
-
-                    //tileColor: preferedColor,
-                    value: widget.team.dealingBonus,
-                    onChanged: (value) {
-                      //ignore: avoid_print
-                      print("checkBox value is $value");
-                      setState(() {
-                        if (value != null) {
-                          widget.team.dealingBonus = value;
-                        }
-                      });
-                    }),
-              ],
-            ),
+          CheckboxContainer(
+            checkboxText: "Closed the game?",
+            checkboxValue: widget.team.closingBonus,
+            callback: (value) {
+              setState(() {
+                if (value != null) {
+                  widget.team.closingBonus = value;
+                }
+              });
+            },
           ),
-          Container(
-            height: containerHeight,
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-            decoration: BoxDecoration(
-                color: preferedColor,
-                border: Border.all(),
-                borderRadius: const BorderRadius.all(Radius.circular(15))),
-            child: Row(
-              children: [
-                Padding(
-                  padding: insets,
-                  child: const Text("Closed the game?",
-                      style: TextStyle(fontSize: 16)),
-                ),
-                Checkbox(
-
-                    //tileColor: preferedColor,
-                    value: widget.team.closingBonus,
-                    onChanged: (value) {
-                      // ignore: avoid_print
-                      print("checkBox value is $value");
-                      setState(() {
-                        if (value != null) {
-                          widget.team.closingBonus = value;
-                        }
-                      });
-                    }),
-              ],
-            ),
-          ),
+          CheckboxContainer(
+            checkboxText: "51/52 cards?",
+            checkboxValue: widget.team.dealingBonus,
+            callback: (value) {
+              setState(() {
+                if (value != null) {
+                  widget.team.dealingBonus = value;
+                }
+              });
+            },
+          )
         ],
       ),
     );
