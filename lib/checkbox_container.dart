@@ -29,15 +29,13 @@ class CheckboxContainer extends StatelessWidget {
         children: [
           Padding(
             padding: insets,
-            child: Text(checkboxText,
-                style: const TextStyle(fontSize: 16)),
+            child: Text(checkboxText, style: const TextStyle(fontSize: 16)),
           ),
           Checkbox(
-    
-              //tileColor: preferedColor,
-              value: checkboxValue,
-              onChanged: callback,
-              ),
+            //tileColor: preferedColor,
+            value: checkboxValue,
+            onChanged: callback,
+          ),
         ],
       ),
     );

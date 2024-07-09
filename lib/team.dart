@@ -65,7 +65,7 @@ class Team {
 
   void deleteRound(int? roundNumber) {
     if (roundNumber != null) {
-  roundPoints.removeAt(roundNumber);
-}
+      roundPoints.removeAt(roundNumber);
+    }
   }
 }
