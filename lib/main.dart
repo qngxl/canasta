@@ -4,6 +4,8 @@ import 'package:canasta/team.dart';
 import 'package:canasta/team_container.dart';
 import 'package:flutter/material.dart';
 
+import 'checkbox_container.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -209,31 +211,16 @@ class _MainPageState extends State<MainPage> {
                     });
                   },
             child: const Text("delete selected Row")),
-        Container(
-          height: containerHeight,
-          margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          decoration: BoxDecoration(
-              color: preferedColor,
-              border: Border.all(),
-              borderRadius: const BorderRadius.all(Radius.circular(15))),
-          child: Row(
-            children: [
-              Padding(
-                padding: insets,
-                child: const Text("Show acumulated total points?",
-                    style: TextStyle(fontSize: 16)),
-              ),
-              Checkbox(
-                  value: showAcumulatedRoundResults,
-                  onChanged: (value) {
-                    setState(() {
-                      if (value != null) {
-                        showAcumulatedRoundResults = value;
-                      }
-                    });
-                  }),
-            ],
-          ),
+        CheckboxContainer(
+          checkboxText: "Show acumulated total points?",
+          checkboxValue: showAcumulatedRoundResults,
+          callback: (value) {
+            setState(() {
+              if (value != null) {
+                showAcumulatedRoundResults = value;
+              }
+            });
+          },
         ),
       ]),
     );
