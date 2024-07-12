@@ -3,12 +3,17 @@
 import 'package:canasta/team.dart';
 import 'package:canasta/team_container.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'checkbox_container.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
   runApp(const MainApp());
 }
+
+late SharedPreferences prefs;
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -36,13 +41,12 @@ class _MainPageState extends State<MainPage> {
   );
   int currentPage = 0;
 
-  // not needed anymore because team has constructor argument
-  // @override
-  // void initState() {
-  //   team1.teamName = "Team 1";
-  //   team2.teamName = "Team 2";
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    team1.loadRoundsFromPrefs();
+    team2.loadRoundsFromPrefs();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

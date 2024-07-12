@@ -1,3 +1,5 @@
+import 'main.dart';
+
 class Team {
   Team(this.teamName);
   int canastaPoints = 0;
@@ -27,6 +29,7 @@ class Team {
 
   void saveCurrentRoundPoints() {
     roundPoints.add(getCurrentRoundPoints());
+    saveRoundsToPrefs();
     canastaPoints = 0;
     red3s = 0;
     dealingBonus = false;
@@ -66,6 +69,25 @@ class Team {
   void deleteRound(int? roundNumber) {
     if (roundNumber != null) {
       roundPoints.removeAt(roundNumber);
+      saveRoundsToPrefs();
     }
+  }
+
+  void loadRoundsFromPrefs() {
+    var strList = prefs.getStringList(teamName);
+    if (strList != null) {
+      roundPoints.clear();
+      for (var str in strList) {
+        roundPoints.add(int.parse(str));
+      }
+    }
+  }
+
+  void saveRoundsToPrefs() {
+    List<String> strList = [];
+    for (var point in roundPoints) {
+      strList.add(point.toString());
+    }
+    prefs.setStringList(teamName, strList);
   }
 }

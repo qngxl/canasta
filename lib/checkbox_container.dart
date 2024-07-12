@@ -29,7 +29,7 @@ class CheckboxContainer extends StatelessWidget {
         children: [
           Padding(
             padding: insets,
-            child: Text(checkboxText, style: const TextStyle(fontSize: 16)),
+            child: Text(checkboxText, style:  TextStyle(fontSize: 16, color: preferedTextColor)),
           ),
           Checkbox(
             //tileColor: preferedColor,
