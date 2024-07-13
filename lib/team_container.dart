@@ -62,7 +62,7 @@ class TeamContainerState extends State<TeamContainer> {
                 Padding(
                   padding: insets,
                   child: Text(
-                    "amount of red 3's:",
+                    "amount of ${Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Playing_card_heart_3.svg/1200px-Playing_card_heart_3.svg.png")} / ${Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Playing_card_diamond_3.svg/1200px-Playing_card_diamond_3.svg.png")}",
                     style: TextStyle(fontSize: 16, color: preferedTextColor),
                   ),
                 ),
@@ -121,7 +121,7 @@ class TeamContainerState extends State<TeamContainer> {
             ),
           ),
           CheckboxContainer(
-            checkboxText: "Closed the game?",
+            checkboxText: "closed the game?",
             checkboxValue: widget.team.closingBonus,
             callback: (value) {
               setState(() {
