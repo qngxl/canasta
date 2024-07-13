@@ -5,17 +5,18 @@ import 'package:flutter/material.dart';
 import 'team_container.dart';
 
 class TextfieldContainer extends StatelessWidget {
- TextfieldContainer({
+ const TextfieldContainer({
     super.key,
 
     required this.callback,
     required this.textfieldText,
+    required this.controller
   });
 
   
   final Function(String) callback;
   final String textfieldText;
-  final controller = TextEditingController();
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -32,20 +33,22 @@ class TextfieldContainer extends StatelessWidget {
             padding: insets,
             child: Text(textfieldText, style:  TextStyle(fontSize: 16, color: preferedTextColor)),
           ),
-          TextField(
-                style: TextStyle(color: preferedTextColor),
-                controller: controller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: preferedColor,
-                  labelText: "Canasta Points",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
+          Expanded(
+            child: TextField(
+                  style: TextStyle(color: preferedTextColor),
+                  controller: controller,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: preferedColor,
+                    //labelText: "Canasta Points",
+                    border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                  ),
+                  onChanged: callback
+                  
                 ),
-                onChanged: callback
-                
-              ),
+          ),
           
         ],
       ),

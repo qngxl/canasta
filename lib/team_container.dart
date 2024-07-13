@@ -36,34 +36,21 @@ class TeamContainerState extends State<TeamContainer> {
         children: [
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
-            
-              // child: TextField(
-              //   style: TextStyle(color: preferedTextColor),
-              //   controller: controller,
-              //   keyboardType: TextInputType.number,
-              //   decoration: InputDecoration(
-              //     filled: true,
-              //     fillColor: preferedColor,
-              //     labelText: "Canasta Points",
-              //     border: OutlineInputBorder(
-              //         borderRadius: BorderRadius.all(Radius.circular(15))),
-              //   ),
-              //   onChanged: (value) {
-              //     setState(() {
-              //       int? help = int.tryParse(value);
-              //       if (help != null) {
-              //         widget.team.canastaPoints = help;
-              //       } else {
-              //         widget.team.canastaPoints = 0;
-              //       }
-              //     });
-              //   },
-              // ),
-           TextfieldContainer (textfieldText: "Canasta points: ", callback: (value) {
-             
-           }),
-
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+              child: TextfieldContainer(
+                textfieldText: "Canasta points: ",
+                controller: controller,
+                callback: (value) {
+                  setState(() {
+                    int? help = int.tryParse(value);
+                    if (help != null) {
+                      widget.team.canastaPoints = help;
+                    } else {
+                      widget.team.canastaPoints = 0;
+                    }
+                  });
+                },
+              )),
           Container(
             height: containerHeight,
             margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
