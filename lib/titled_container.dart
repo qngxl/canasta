@@ -1,3 +1,4 @@
+import 'package:canasta/team_container.dart';
 import 'package:flutter/material.dart';
 
 //copied from stack overflow
@@ -18,7 +19,7 @@ class TitledContainer extends StatelessWidget {
           margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
           padding: EdgeInsets.all(idden),
           decoration: BoxDecoration(
-            border: Border.all(),
+            border: Border.all(color: preferedColor),
             borderRadius: BorderRadius.circular(idden * 0.6),
           ),
           child: child,

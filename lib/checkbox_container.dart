@@ -20,7 +20,7 @@ class CheckboxContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: containerHeight,
-      margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+      margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
       decoration: BoxDecoration(
           color: preferedColor,
           border: Border.all(),
@@ -29,12 +29,16 @@ class CheckboxContainer extends StatelessWidget {
         children: [
           Padding(
             padding: insets,
-            child: Text(checkboxText, style:  TextStyle(fontSize: 16, color: preferedTextColor)),
+            child: Text(checkboxText,
+                style: TextStyle(fontSize: 16, color: preferedTextColor)),
           ),
-          Checkbox(
-            //tileColor: preferedColor,
-            value: checkboxValue,
-            onChanged: callback,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(80, 10, 10, 10),
+            child: Checkbox(
+              //tileColor: preferedColor,
+              value: checkboxValue,
+              onChanged: callback,
+            ),
           ),
         ],
       ),

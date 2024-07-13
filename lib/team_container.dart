@@ -7,7 +7,6 @@ import 'checkbox_container.dart';
 import 'textfield_container.dart';
 import 'titled_container.dart';
 
-
 class TeamContainer extends StatefulWidget {
   const TeamContainer({super.key, required this.team});
   final Team team;
@@ -17,7 +16,7 @@ class TeamContainer extends StatefulWidget {
 }
 
 var containerHeight = 45.0;
-var preferedColor = Color.fromARGB(255, 59, 46, 231);
+var preferedColor = Color.fromARGB(255, 109, 102, 209);
 var preferedTextColor = Color.fromARGB(255, 255, 255, 255);
 var insets = const EdgeInsets.fromLTRB(10, 10, 20, 10);
 
@@ -34,9 +33,9 @@ class TeamContainerState extends State<TeamContainer> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+              padding: const EdgeInsets.all(0),
               child: TextfieldContainer(
                 textfieldText: "Canasta points: ",
                 controller: controller,
@@ -53,7 +52,7 @@ class TeamContainerState extends State<TeamContainer> {
               )),
           Container(
             height: containerHeight,
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+            margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             decoration: BoxDecoration(
                 color: preferedColor,
                 border: Border.all(),
@@ -133,7 +132,7 @@ class TeamContainerState extends State<TeamContainer> {
             },
           ),
           CheckboxContainer(
-            checkboxText: "51/52 cards?",
+            checkboxText: "51/52 cards?        ",
             checkboxValue: widget.team.dealingBonus,
             callback: (value) {
               setState(() {
