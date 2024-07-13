@@ -144,7 +144,10 @@ class _MainPageState extends State<MainPage> {
                         "total points of team 2: ${team2.getTotalRoundPoints()}");
                   });
                 },
-                child: const Text("save round")),
+                child: Text(
+                  "save round",
+                  style: TextStyle(color: preferedTextColor),
+                )),
           ],
         ),
       ]),
