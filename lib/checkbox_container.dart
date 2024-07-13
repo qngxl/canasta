@@ -23,7 +23,7 @@ class CheckboxContainer extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
       decoration: BoxDecoration(
           color: preferedColor,
-          border: Border.all(),
+          // border: Border.all(),
           borderRadius: const BorderRadius.all(Radius.circular(15))),
       child: Row(
         children: [
