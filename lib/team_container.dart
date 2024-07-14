@@ -126,7 +126,7 @@ class TeamContainerState extends State<TeamContainer> {
             ),
           ),
           CheckboxContainer(
-            checkboxText: "closed the game?             ",
+            checkboxText: "closed the game?              ",
             checkboxValue: widget.team.closingBonus,
             callback: (value) {
               setState(() {
@@ -137,7 +137,7 @@ class TeamContainerState extends State<TeamContainer> {
             },
           ),
           CheckboxContainer(
-            checkboxText: "51/52 cards?                     ",
+            checkboxText: "51/52 cards?                       ",
             checkboxValue: widget.team.dealingBonus,
             callback: (value) {
               setState(() {

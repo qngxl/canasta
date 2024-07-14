@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'team_container.dart';
-
 class CustomText extends StatelessWidget {
   const CustomText(
     {super.key,
@@ -14,6 +12,6 @@ class CustomText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Container();
+    return const Text("");
   }
 }

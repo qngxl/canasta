@@ -33,7 +33,7 @@ class CheckboxContainer extends StatelessWidget {
                 style: TextStyle(fontSize: 16, color: preferedTextColor)),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(25, 10, 10, 10),
+            padding: const EdgeInsets.fromLTRB(7, 10, 10, 10),
             child: Checkbox(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(2.0),

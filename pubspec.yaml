@@ -17,4 +17,10 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  fonts:
+    - family: Satoshi
+      fonts: 
+        - asset: custom_fonts/fonts/Satoshi-Variable.ttf
+          weight: 600
   uses-material-design: true
+
