@@ -33,8 +33,14 @@ class CheckboxContainer extends StatelessWidget {
                 style: TextStyle(fontSize: 16, color: preferedTextColor)),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(80, 10, 10, 10),
+            padding: const EdgeInsets.fromLTRB(25, 10, 10, 10),
             child: Checkbox(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(2.0),
+              ),
+              side: WidgetStateBorderSide.resolveWith(
+                (states) => BorderSide(width: 1.5, color: preferedTextColor),
+              ),
               //tileColor: preferedColor,
               value: checkboxValue,
               onChanged: callback,

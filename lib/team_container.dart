@@ -62,66 +62,71 @@ class TeamContainerState extends State<TeamContainer> {
                 Padding(
                   padding: insets,
                   child: Text(
-                    "amount of ${Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Playing_card_heart_3.svg/1200px-Playing_card_heart_3.svg.png")} / ${Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Playing_card_diamond_3.svg/1200px-Playing_card_diamond_3.svg.png")}",
+                    "amount of red 3's:",
                     style: TextStyle(fontSize: 16, color: preferedTextColor),
                   ),
                 ),
-                DropdownButton(
-                  dropdownColor: preferedColor,
-                  items: [
-                    DropdownMenuItem(
-                        value: "0",
-                        child: Text("0",
-                            style: TextStyle(
-                                fontSize: 16, color: preferedTextColor))),
-                    DropdownMenuItem(
-                        value: "1",
-                        child: Text("1",
-                            style: TextStyle(
-                                fontSize: 16, color: preferedTextColor))),
-                    DropdownMenuItem(
-                        value: "2",
-                        child: Text("2",
-                            style: TextStyle(
-                                fontSize: 16, color: preferedTextColor))),
-                    DropdownMenuItem(
-                        value: "3",
-                        child: Text("3",
-                            style: TextStyle(
-                                fontSize: 16, color: preferedTextColor))),
-                    DropdownMenuItem(
-                        value: "4",
-                        child: Text("4",
-                            style: TextStyle(
-                                fontSize: 16, color: preferedTextColor))),
-                    DropdownMenuItem(
-                        value: "5",
-                        child: Text("5",
-                            style: TextStyle(
-                                fontSize: 16, color: preferedTextColor))),
-                    DropdownMenuItem(
-                        value: "6",
-                        child: Text("6",
-                            style: TextStyle(
-                                fontSize: 16, color: preferedTextColor))),
-                  ],
-                  onChanged: (value) {
-                    setState(() {
-                      int? help = int.tryParse(value!);
-                      if (help != null) {
-                        widget.team.red3s = help;
-                      } else {
-                        widget.team.red3s = 0;
-                      }
-                    });
-                  },
-                  value: widget.team.red3s.toString(),
+                DropdownButtonHideUnderline(
+                  child: DropdownButton(
+                    iconEnabledColor: preferedTextColor,
+                    iconSize: 24,
+                    borderRadius: BorderRadius.circular(10),
+                    dropdownColor: preferedColor,
+                    items: [
+                      DropdownMenuItem(
+                          value: "0",
+                          child: Text("0",
+                              style: TextStyle(
+                                  fontSize: 16, color: preferedTextColor))),
+                      DropdownMenuItem(
+                          value: "1",
+                          child: Text("1",
+                              style: TextStyle(
+                                  fontSize: 16, color: preferedTextColor))),
+                      DropdownMenuItem(
+                          value: "2",
+                          child: Text("2",
+                              style: TextStyle(
+                                  fontSize: 16, color: preferedTextColor))),
+                      DropdownMenuItem(
+                          value: "3",
+                          child: Text("3",
+                              style: TextStyle(
+                                  fontSize: 16, color: preferedTextColor))),
+                      DropdownMenuItem(
+                          value: "4",
+                          child: Text("4",
+                              style: TextStyle(
+                                  fontSize: 16, color: preferedTextColor))),
+                      DropdownMenuItem(
+                          value: "5",
+                          child: Text("5",
+                              style: TextStyle(
+                                  fontSize: 16, color: preferedTextColor))),
+                      DropdownMenuItem(
+                          value: "6",
+                          child: Text("6",
+                              style: TextStyle(
+                                  fontSize: 16, color: preferedTextColor))),
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        int? help = int.tryParse(value!);
+                        if (help != null) {
+                          widget.team.red3s = help;
+                        } else {
+                          widget.team.red3s = 0;
+                        }
+                      });
+                    },
+                    value: widget.team.red3s.toString(),
+                  ),
                 ),
               ],
             ),
           ),
           CheckboxContainer(
-            checkboxText: "closed the game?",
+            checkboxText: "closed the game?             ",
             checkboxValue: widget.team.closingBonus,
             callback: (value) {
               setState(() {
@@ -132,7 +137,7 @@ class TeamContainerState extends State<TeamContainer> {
             },
           ),
           CheckboxContainer(
-            checkboxText: "51/52 cards?        ",
+            checkboxText: "51/52 cards?                     ",
             checkboxValue: widget.team.dealingBonus,
             callback: (value) {
               setState(() {

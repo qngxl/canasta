@@ -20,7 +20,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: MainPage());
+    return const MaterialApp(
+        debugShowCheckedModeBanner: false, home: MainPage());
   }
 }
 
@@ -52,8 +53,8 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
+        backgroundColor: preferedColor,
+        foregroundColor: preferedTextColor,
         centerTitle: true,
         title: const Text("Canasta Calculator"),
       ),
@@ -71,6 +72,8 @@ class _MainPageState extends State<MainPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: preferedColor),
                     onPressed: () {
                       setState(() {
                         if (currentPage == 0) {
@@ -85,17 +88,24 @@ class _MainPageState extends State<MainPage> {
                         Navigator.of(context).pop();
                       });
                     },
-                    child: Text((currentPage == 0)
-                        ? "show all results"
-                        : "show calculating page")),
+                    child: Text(
+                        style:
+                            TextStyle(fontSize: 16, color: preferedTextColor),
+                        (currentPage == 0)
+                            ? "show all results"
+                            : "show calculating page")),
                 ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: preferedColor),
                     onPressed: () {
                       setState(() {
                         team1.newGame();
                         team2.newGame();
                       });
                     },
-                    child: const Text("new game")),
+                    child: Text("new game",
+                        style:
+                            TextStyle(fontSize: 16, color: preferedTextColor))),
               ],
             ),
           ),
@@ -209,6 +219,7 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: preferedColor),
             onPressed: selectedIndex == null
                 ? null
                 : () {
@@ -217,7 +228,8 @@ class _MainPageState extends State<MainPage> {
                       team2.deleteRound(selectedIndex);
                     });
                   },
-            child: const Text("delete selected Row")),
+            child: Text("delete selected Row",
+                style: TextStyle(fontSize: 16, color: preferedTextColor))),
         CheckboxContainer(
           checkboxText: "Show acumulated total points?",
           checkboxValue: showAcumulatedRoundResults,

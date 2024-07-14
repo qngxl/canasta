@@ -32,20 +32,23 @@ class TextfieldContainer extends StatelessWidget {
                 style: TextStyle(fontSize: 16, color: preferedTextColor)),
           ),
           Expanded(
-            child: TextField(
-                style: TextStyle(color: preferedTextColor),
-                controller: controller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: preferedColor,
-                  //labelText: "Canasta Points",
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: preferedColor),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(15))),
-                ),
-                onChanged: callback),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+              child: TextField(
+                  style: TextStyle(color: preferedTextColor),
+                  controller: controller,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: preferedColor,
+                    //labelText: "Canasta Points",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: preferedColor),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15))),
+                  ),
+                  onChanged: callback),
+            ),
           ),
         ],
       ),
