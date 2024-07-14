@@ -35,7 +35,11 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Alignment> _topAlignmentAnimation;
+  late Animation<Alignment> _bottomAlignmentAnimation;
   Team team1 = Team("Team 1");
   Team team2 = Team("Team 2");
   int? selectedIndex;
@@ -49,92 +53,141 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     team1.loadRoundsFromPrefs();
     team2.loadRoundsFromPrefs();
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 10));
+    _topAlignmentAnimation = TweenSequence<Alignment>(
+      [
+        TweenSequenceItem<Alignment>(
+            tween: Tween<Alignment>(
+                begin: Alignment.topLeft, end: Alignment.topRight),
+            weight: 1),
+        TweenSequenceItem<Alignment>(
+            tween: Tween<Alignment>(
+                begin: Alignment.topRight, end: Alignment.bottomRight),
+            weight: 1),
+        TweenSequenceItem<Alignment>(
+            tween: Tween<Alignment>(
+                begin: Alignment.bottomRight, end: Alignment.bottomLeft),
+            weight: 1),
+        TweenSequenceItem<Alignment>(
+            tween: Tween<Alignment>(
+                begin: Alignment.bottomLeft, end: Alignment.topLeft),
+            weight: 1),
+      ],
+    ).animate(_controller);
+
+    _bottomAlignmentAnimation = TweenSequence<Alignment>(
+      [
+        TweenSequenceItem<Alignment>(
+            tween: Tween<Alignment>(
+                begin: Alignment.bottomRight, end: Alignment.bottomLeft),
+            weight: 1),
+        TweenSequenceItem<Alignment>(
+            tween: Tween<Alignment>(
+                begin: Alignment.bottomLeft, end: Alignment.topLeft),
+            weight: 1),
+        TweenSequenceItem<Alignment>(
+            tween: Tween<Alignment>(
+                begin: Alignment.topLeft, end: Alignment.topRight),
+            weight: 1),
+        TweenSequenceItem<Alignment>(
+            tween: Tween<Alignment>(
+                begin: Alignment.topRight, end: Alignment.bottomRight),
+            weight: 1),
+      ],
+    ).animate(_controller);
+    _controller.repeat();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-            Color.fromARGB(255, 107, 185, 248),
-            Color.fromARGB(255, 255, 255, 255)
-          ])),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: preferedColor,
-          foregroundColor: preferedTextColor,
-          centerTitle: true,
-          title: const Text("Canasta Calculator"),
-        ),
-        endDrawer: Align(
-          alignment: Alignment.topRight,
-          child: Container(
-            height: 300,
-            margin: const EdgeInsets.fromLTRB(0, 90, 0, 0),
-            // decoration: BoxDecoration(
-            //     border: Border.all(),
-            //     borderRadius: const BorderRadius.all(Radius.circular(15))),
-            child: Drawer(
-              backgroundColor: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: preferedColor),
-                      onPressed: () {
-                        setState(() {
-                          if (currentPage == 0) {
-                            controller.animateToPage(1,
-                                duration: const Duration(milliseconds: 500),
-                                curve: Curves.easeInOut);
-                          } else {
-                            controller.animateToPage(0,
-                                duration: const Duration(milliseconds: 500),
-                                curve: Curves.easeInOut);
-                          }
-                          Navigator.of(context).pop();
-                        });
-                      },
-                      child: Text(
-                          style:
-                              TextStyle(fontSize: 16, color: preferedTextColor),
-                          (currentPage == 0)
-                              ? "show all results"
-                              : "show calculating page")),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: preferedColor),
-                      onPressed: () {
-                        setState(() {
-                          team1.newGame();
-                          team2.newGame();
-                        });
-                      },
-                      child: Text("new game",
-                          style: TextStyle(
-                              fontSize: 16, color: preferedTextColor))),
-                ],
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context,_) {
+        return Container(
+          decoration:  BoxDecoration(
+              gradient: LinearGradient(
+                  begin: _topAlignmentAnimation.value,
+                  end: _bottomAlignmentAnimation.value,
+                  colors: const [
+                Color.fromARGB(255, 137, 202, 255),
+                Color.fromARGB(255, 215, 238, 253)
+              ])),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              backgroundColor: preferedColor,
+              foregroundColor: preferedTextColor,
+              centerTitle: true,
+              title: const Text("Canasta Calculator"),
+            ),
+            endDrawer: Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                height: 300,
+                margin: const EdgeInsets.fromLTRB(0, 90, 0, 0),
+                // decoration: BoxDecoration(
+                //     border: Border.all(),
+                //     borderRadius: const BorderRadius.all(Radius.circular(15))),
+                child: Drawer(
+                  backgroundColor: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: preferedColor),
+                          onPressed: () {
+                            setState(() {
+                              if (currentPage == 0) {
+                                controller.animateToPage(1,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut);
+                              } else {
+                                controller.animateToPage(0,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut);
+                              }
+                              Navigator.of(context).pop();
+                            });
+                          },
+                          child: Text(
+                              style:
+                                  TextStyle(fontSize: 16, color: preferedTextColor),
+                              (currentPage == 0)
+                                  ? "show all results"
+                                  : "show calculating page")),
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: preferedColor),
+                          onPressed: () {
+                            setState(() {
+                              team1.newGame();
+                              team2.newGame();
+                            });
+                          },
+                          child: Text("new game",
+                              style: TextStyle(
+                                  fontSize: 16, color: preferedTextColor))),
+                    ],
+                  ),
+                ),
               ),
             ),
+            body: PageView(
+                onPageChanged: (value) {
+                  setState(() {
+                    selectedIndex = null;
+                    currentPage = value;
+                    //print("current value is: $value");
+                  });
+                },
+                controller: controller,
+                children: [getCurrentRoundPage(), getAllRoundPage()]),
           ),
-        ),
-        body: PageView(
-            onPageChanged: (value) {
-              setState(() {
-                selectedIndex = null;
-                currentPage = value;
-                //print("current value is: $value");
-              });
-            },
-            controller: controller,
-            children: [getCurrentRoundPage(), getAllRoundPage()]),
-      ),
+        );
+      }
     );
   }
 
@@ -162,10 +215,6 @@ class _MainPageState extends State<MainPage> {
                     print(team2.getCurrentRoundPoints());
                     team1.saveCurrentRoundPoints();
                     team2.saveCurrentRoundPoints();
-                    print(
-                        "total points of team 1: ${team1.getTotalRoundPoints()}");
-                    print(
-                        "total points of team 2: ${team2.getTotalRoundPoints()}");
                   });
                 },
                 child: Text(
@@ -218,7 +267,7 @@ class _MainPageState extends State<MainPage> {
     return SingleChildScrollView(
       child: Column(children: [
         Container(
-          color: Colors.white,
+          color: Colors.transparent,
           padding: const EdgeInsets.all(20.0),
           child: GestureDetector(
             onTap: () {

@@ -19,7 +19,7 @@ class TitledContainer extends StatelessWidget {
           margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
           padding: EdgeInsets.all(idden),
           decoration: BoxDecoration(
-            border: Border.all(color: preferedColor, width: 1.2),
+            border: Border.all(color: preferedColor, width: 2),
             borderRadius: BorderRadius.circular(idden * 0.6),
           ),
           child: child,
