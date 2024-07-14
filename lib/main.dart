@@ -239,8 +239,7 @@ class _MainPageState extends State<MainPage>
     for (var i = 0; i < team1.roundPoints.length; i++) {
       rows.add(TableRow(
           decoration: BoxDecoration(
-              color:
-                  selectedIndex == i ? preferedColor : Colors.transparent),
+              color: selectedIndex == i ? preferedColor : Colors.transparent),
           children: [
             GestureDetector(
                 onTap: () {
