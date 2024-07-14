@@ -21,8 +21,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false, home: const MainPage(),
-        theme: ThemeData(fontFamily: "Satoshi"),);
+      debugShowCheckedModeBanner: false,
+      home: const MainPage(),
+      theme: ThemeData(fontFamily: "Satoshi"),
+    );
   }
 }
 
@@ -52,76 +54,87 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: preferedColor,
-        foregroundColor: preferedTextColor,
-        centerTitle: true,
-        title: const Text("Canasta Calculator"),
-      ),
-      endDrawer: Align(
-        alignment: Alignment.topRight,
-        child: Container(
-          height: 300,
-          margin: const EdgeInsets.fromLTRB(0, 90, 0, 0),
-          // decoration: BoxDecoration(
-          //     border: Border.all(),
-          //     borderRadius: const BorderRadius.all(Radius.circular(15))),
-          child: Drawer(
-            backgroundColor: Colors.white,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: preferedColor),
-                    onPressed: () {
-                      setState(() {
-                        if (currentPage == 0) {
-                          controller.animateToPage(1,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut);
-                        } else {
-                          controller.animateToPage(0,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut);
-                        }
-                        Navigator.of(context).pop();
-                      });
-                    },
-                    child: Text(
-                        style:
-                            TextStyle(fontSize: 16, color: preferedTextColor),
-                        (currentPage == 0)
-                            ? "show all results"
-                            : "show calculating page")),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: preferedColor),
-                    onPressed: () {
-                      setState(() {
-                        team1.newGame();
-                        team2.newGame();
-                      });
-                    },
-                    child: Text("new game",
-                        style:
-                            TextStyle(fontSize: 16, color: preferedTextColor))),
-              ],
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+            Color.fromARGB(255, 107, 185, 248),
+            Color.fromARGB(255, 255, 255, 255)
+          ])),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: preferedColor,
+          foregroundColor: preferedTextColor,
+          centerTitle: true,
+          title: const Text("Canasta Calculator"),
+        ),
+        endDrawer: Align(
+          alignment: Alignment.topRight,
+          child: Container(
+            height: 300,
+            margin: const EdgeInsets.fromLTRB(0, 90, 0, 0),
+            // decoration: BoxDecoration(
+            //     border: Border.all(),
+            //     borderRadius: const BorderRadius.all(Radius.circular(15))),
+            child: Drawer(
+              backgroundColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: preferedColor),
+                      onPressed: () {
+                        setState(() {
+                          if (currentPage == 0) {
+                            controller.animateToPage(1,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut);
+                          } else {
+                            controller.animateToPage(0,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut);
+                          }
+                          Navigator.of(context).pop();
+                        });
+                      },
+                      child: Text(
+                          style:
+                              TextStyle(fontSize: 16, color: preferedTextColor),
+                          (currentPage == 0)
+                              ? "show all results"
+                              : "show calculating page")),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: preferedColor),
+                      onPressed: () {
+                        setState(() {
+                          team1.newGame();
+                          team2.newGame();
+                        });
+                      },
+                      child: Text("new game",
+                          style: TextStyle(
+                              fontSize: 16, color: preferedTextColor))),
+                ],
+              ),
             ),
           ),
         ),
+        body: PageView(
+            onPageChanged: (value) {
+              setState(() {
+                selectedIndex = null;
+                currentPage = value;
+                //print("current value is: $value");
+              });
+            },
+            controller: controller,
+            children: [getCurrentRoundPage(), getAllRoundPage()]),
       ),
-      body: PageView(
-          onPageChanged: (value) {
-            setState(() {
-              selectedIndex = null;
-              currentPage = value;
-              //print("current value is: $value");
-            });
-          },
-          controller: controller,
-          children: [getCurrentRoundPage(), getAllRoundPage()]),
     );
   }
 
