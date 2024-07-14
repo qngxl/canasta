@@ -240,7 +240,7 @@ class _MainPageState extends State<MainPage>
       rows.add(TableRow(
           decoration: BoxDecoration(
               color:
-                  selectedIndex == i ? Colors.greenAccent : Colors.transparent),
+                  selectedIndex == i ? preferedColor : Colors.transparent),
           children: [
             GestureDetector(
                 onTap: () {
@@ -277,18 +277,21 @@ class _MainPageState extends State<MainPage>
             ),
           ),
         ),
-        ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: preferedColor),
-            onPressed: selectedIndex == null
-                ? null
-                : () {
-                    setState(() {
-                      team1.deleteRound(selectedIndex);
-                      team2.deleteRound(selectedIndex);
-                    });
-                  },
-            child: Text("delete selected Row",
-                style: TextStyle(fontSize: 16, color: preferedTextColor))),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 5, 0, 20),
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: preferedColor),
+              onPressed: selectedIndex == null
+                  ? null
+                  : () {
+                      setState(() {
+                        team1.deleteRound(selectedIndex);
+                        team2.deleteRound(selectedIndex);
+                      });
+                    },
+              child: Text("delete selected Row",
+                  style: TextStyle(fontSize: 16, color: preferedTextColor))),
+        ),
         CheckboxContainer(
           checkboxText: "Show acumulated total points?",
           checkboxValue: showAcumulatedRoundResults,
