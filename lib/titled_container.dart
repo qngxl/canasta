@@ -19,8 +19,13 @@ class TitledContainer extends StatelessWidget {
           margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
           padding: EdgeInsets.all(idden),
           decoration: BoxDecoration(
-            border: Border.all(color: preferedColor, width: 2),
-            borderRadius: BorderRadius.circular(idden * 0.6),
+            // border: Border.all(color: preferedColor, width: 2),
+            // borderRadius: BorderRadius.circular(idden * 0.6),
+            border: Border(
+                bottom: BorderSide(color: preferedColor, width: 2),
+                left: BorderSide(color: preferedColor, width: 2),
+                right: BorderSide(color: preferedColor, width: 2),
+                top: const BorderSide(color: Colors.transparent, width: 2)),
           ),
           child: child,
         ),
@@ -31,11 +36,11 @@ class TitledContainer extends StatelessWidget {
           child: Align(
             // alignment: Alignment.center,
             child: Container(
-              color: Colors.white,
+              color: Colors.transparent,
               child: Text(
                 titleText,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 19),
+                style: const TextStyle(color: Colors.black, fontSize: 19),
               ),
             ),
           ),
