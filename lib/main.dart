@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:canasta/team.dart';
 import 'package:canasta/team_container.dart';
 import 'package:flutter/material.dart';
@@ -103,92 +101,92 @@ class _MainPageState extends State<MainPage>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
-      builder: (context,_) {
-        return Container(
-          decoration:  BoxDecoration(
-              gradient: LinearGradient(
-                  begin: _topAlignmentAnimation.value,
-                  end: _bottomAlignmentAnimation.value,
-                  colors: const [
-                Color.fromARGB(255, 137, 202, 255),
-                Color.fromARGB(255, 215, 238, 253)
-              ])),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            appBar: AppBar(
-              backgroundColor: preferedColor,
-              foregroundColor: preferedTextColor,
-              centerTitle: true,
-              title: const Text("Canasta Calculator"),
-            ),
-            endDrawer: Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                height: 300,
-                margin: const EdgeInsets.fromLTRB(0, 90, 0, 0),
-                // decoration: BoxDecoration(
-                //     border: Border.all(),
-                //     borderRadius: const BorderRadius.all(Radius.circular(15))),
-                child: Drawer(
-                  backgroundColor: Colors.white,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: preferedColor),
-                          onPressed: () {
-                            setState(() {
-                              if (currentPage == 0) {
-                                controller.animateToPage(1,
-                                    duration: const Duration(milliseconds: 500),
-                                    curve: Curves.easeInOut);
-                              } else {
-                                controller.animateToPage(0,
-                                    duration: const Duration(milliseconds: 500),
-                                    curve: Curves.easeInOut);
-                              }
-                              Navigator.of(context).pop();
-                            });
-                          },
-                          child: Text(
-                              style:
-                                  TextStyle(fontSize: 16, color: preferedTextColor),
-                              (currentPage == 0)
-                                  ? "show all results"
-                                  : "show calculating page")),
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: preferedColor),
-                          onPressed: () {
-                            setState(() {
-                              team1.newGame();
-                              team2.newGame();
-                            });
-                          },
-                          child: Text("new game",
-                              style: TextStyle(
-                                  fontSize: 16, color: preferedTextColor))),
-                    ],
+        animation: _controller,
+        builder: (context, _) {
+          return Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: _topAlignmentAnimation.value,
+                    end: _bottomAlignmentAnimation.value,
+                    colors: const [
+                  Color.fromARGB(255, 137, 202, 255),
+                  Color.fromARGB(255, 215, 238, 253)
+                ])),
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: AppBar(
+                backgroundColor: preferedColor,
+                foregroundColor: preferedTextColor,
+                centerTitle: true,
+                title: const Text("Canasta Calculator"),
+              ),
+              endDrawer: Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  height: 300,
+                  margin: const EdgeInsets.fromLTRB(0, 90, 0, 0),
+                  // decoration: BoxDecoration(
+                  //     border: Border.all(),
+                  //     borderRadius: const BorderRadius.all(Radius.circular(15))),
+                  child: Drawer(
+                    backgroundColor: Colors.white,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: preferedColor),
+                            onPressed: () {
+                              setState(() {
+                                if (currentPage == 0) {
+                                  controller.animateToPage(1,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.easeInOut);
+                                } else {
+                                  controller.animateToPage(0,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.easeInOut);
+                                }
+                                Navigator.of(context).pop();
+                              });
+                            },
+                            child: Text(
+                                style: TextStyle(
+                                    fontSize: 16, color: preferedTextColor),
+                                (currentPage == 0)
+                                    ? "show all results"
+                                    : "show calculating page")),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: preferedColor),
+                            onPressed: () {
+                              setState(() {
+                                team1.newGame();
+                                team2.newGame();
+                              });
+                            },
+                            child: Text("new game",
+                                style: TextStyle(
+                                    fontSize: 16, color: preferedTextColor))),
+                      ],
+                    ),
                   ),
                 ),
               ),
+              body: PageView(
+                  onPageChanged: (value) {
+                    setState(() {
+                      selectedIndex = null;
+                      currentPage = value;
+                    });
+                  },
+                  controller: controller,
+                  children: [getCurrentRoundPage(), getAllRoundPage()]),
             ),
-            body: PageView(
-                onPageChanged: (value) {
-                  setState(() {
-                    selectedIndex = null;
-                    currentPage = value;
-                    //print("current value is: $value");
-                  });
-                },
-                controller: controller,
-                children: [getCurrentRoundPage(), getAllRoundPage()]),
-          ),
-        );
-      }
-    );
+          );
+        });
   }
 
   SingleChildScrollView getCurrentRoundPage() {
@@ -211,8 +209,6 @@ class _MainPageState extends State<MainPage>
                 style: ElevatedButton.styleFrom(backgroundColor: preferedColor),
                 onPressed: () {
                   setState(() {
-                    print(team1.getCurrentRoundPoints());
-                    print(team2.getCurrentRoundPoints());
                     team1.saveCurrentRoundPoints();
                     team2.saveCurrentRoundPoints();
                   });
