@@ -1,3 +1,4 @@
+import 'package:canasta/button.dart';
 import 'package:canasta/team.dart';
 import 'package:canasta/team_container.dart';
 import 'package:flutter/material.dart';
@@ -126,7 +127,7 @@ class _MainPageState extends State<MainPage>
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(15),
-                          bottomLeft: Radius.circular(15)),
+                          bottomLeft: Radius.circular(20)),
                       gradient: LinearGradient(
                           begin: _topAlignmentAnimation.value,
                           end: _bottomAlignmentAnimation.value,
@@ -144,43 +145,34 @@ class _MainPageState extends State<MainPage>
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: preferedColor),
-                            onPressed: () {
-                              setState(() {
-                                if (currentPage == 0) {
-                                  controller.animateToPage(1,
-                                      duration:
-                                          const Duration(milliseconds: 500),
-                                      curve: Curves.easeInOut);
-                                } else {
-                                  controller.animateToPage(0,
-                                      duration:
-                                          const Duration(milliseconds: 500),
-                                      curve: Curves.easeInOut);
-                                }
-                                Navigator.of(context).pop();
-                              });
-                            },
-                            child: Text(
-                                style: TextStyle(
-                                    fontSize: 16, color: preferedTextColor),
-                                (currentPage == 0)
-                                    ? "show all results"
-                                    : "show calculating page")),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: preferedColor),
-                            onPressed: () {
-                              setState(() {
-                                team1.newGame();
-                                team2.newGame();
-                              });
-                            },
-                            child: Text("new game",
-                                style: TextStyle(
-                                    fontSize: 16, color: preferedTextColor))),
+                        MyButton(
+                          buttonText: (currentPage == 0)
+                              ? "show all results"
+                              : "show calculating page",
+                          onPressed: () {
+                            setState(() {
+                              if (currentPage == 0) {
+                                controller.animateToPage(1,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut);
+                              } else {
+                                controller.animateToPage(0,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut);
+                              }
+                              Navigator.of(context).pop();
+                            });
+                          },
+                        ),
+                        MyButton(
+                          buttonText: "new game",
+                          onPressed: () {
+                            setState(() {
+                              team1.newGame();
+                              team2.newGame();
+                            });
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -208,26 +200,15 @@ class _MainPageState extends State<MainPage>
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            // ElevatedButton(
-            //     onPressed: () {
-            //       setState(() {
-            //         team1.newGame();
-            //         team2.newGame();
-            //       });
-            //     },
-            //     child: const Text("new game")),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: preferedColor),
-                onPressed: () {
-                  setState(() {
-                    team1.saveCurrentRoundPoints();
-                    team2.saveCurrentRoundPoints();
-                  });
-                },
-                child: Text(
-                  "save round",
-                  style: TextStyle(color: preferedTextColor),
-                )),
+            MyButton(
+              buttonText: "save round",
+              onPressed: () {
+                setState(() {
+                  team1.saveCurrentRoundPoints();
+                  team2.saveCurrentRoundPoints();
+                });
+              },
+            ),
           ],
         ),
       ]),
@@ -289,18 +270,17 @@ class _MainPageState extends State<MainPage>
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 5, 0, 20),
-          child: ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: preferedColor),
-              onPressed: selectedIndex == null
-                  ? null
-                  : () {
-                      setState(() {
-                        team1.deleteRound(selectedIndex);
-                        team2.deleteRound(selectedIndex);
-                      });
-                    },
-              child: Text("delete selected Row",
-                  style: TextStyle(fontSize: 16, color: preferedTextColor))),
+          child: MyButton(
+            buttonText: "delete selected row",
+            onPressed: selectedIndex == null
+                ? null
+                : () {
+                    setState(() {
+                      team1.deleteRound(selectedIndex);
+                      team2.deleteRound(selectedIndex);
+                    });
+                  },
+          ),
         ),
         CheckboxContainer(
           checkboxText: "Show acumulated total points?",
