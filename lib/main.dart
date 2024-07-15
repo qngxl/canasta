@@ -123,13 +123,24 @@ class _MainPageState extends State<MainPage>
               endDrawer: Align(
                 alignment: Alignment.topRight,
                 child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          bottomLeft: Radius.circular(15)),
+                      gradient: LinearGradient(
+                          begin: _topAlignmentAnimation.value,
+                          end: _bottomAlignmentAnimation.value,
+                          colors: const [
+                            Color.fromARGB(255, 137, 202, 255),
+                            Color.fromARGB(255, 215, 238, 253)
+                          ])),
                   height: 300,
                   margin: const EdgeInsets.fromLTRB(0, 90, 0, 0),
                   // decoration: BoxDecoration(
                   //     border: Border.all(),
                   //     borderRadius: const BorderRadius.all(Radius.circular(15))),
                   child: Drawer(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Colors.transparent,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
