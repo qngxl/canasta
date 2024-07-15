@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 class TitledContainer extends StatelessWidget {
   const TitledContainer(
-      {required this.titleText, required this.child, this.idden = 8, Key? key})
+      {required this.titleText, required this.child, this.insets = 8, Key? key})
       : super(key: key);
   final String titleText;
-  final double idden;
+  final double insets;
   final Widget child;
 
   @override
@@ -17,7 +17,7 @@ class TitledContainer extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-          padding: EdgeInsets.all(idden),
+          padding: EdgeInsets.all(insets),
           decoration: BoxDecoration(
             // border: Border.all(color: preferedColor, width: 2),
             // borderRadius: BorderRadius.circular(idden * 0.6),

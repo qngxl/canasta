@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'team_container.dart';
 
 class MyButton extends StatelessWidget {
-  const MyButton({super.key, required this.buttonText, required this.onPressed});
+  const MyButton(
+      {super.key, required this.buttonText, required this.onPressed});
 
   final void Function()? onPressed;
   final String buttonText;
