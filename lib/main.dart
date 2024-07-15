@@ -1,10 +1,12 @@
-import 'package:canasta/button.dart';
+import 'package:canasta/canasta_button.dart';
 import 'package:canasta/team.dart';
 import 'package:canasta/team_container.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'checkbox_container.dart';
+import 'canasta_text.dart';
+import 'global.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -145,7 +147,7 @@ class _MainPageState extends State<MainPage>
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        MyButton(
+                        CanastaButton(
                           buttonText: (currentPage == 0)
                               ? "show all results"
                               : "show calculating page",
@@ -164,7 +166,7 @@ class _MainPageState extends State<MainPage>
                             });
                           },
                         ),
-                        MyButton(
+                        CanastaButton(
                           buttonText: "new game",
                           onPressed: () {
                             setState(() {
@@ -200,7 +202,7 @@ class _MainPageState extends State<MainPage>
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            MyButton(
+            CanastaButton(
               buttonText: "save round",
               onPressed: () {
                 setState(() {
@@ -220,10 +222,11 @@ class _MainPageState extends State<MainPage>
     rows.add(
       TableRow(
           decoration: BoxDecoration(
+            color: preferedColor,
             border: Border.all(width: 3, color: preferedColor),
           ),
           children: [
-            const Text('Round'),
+            const CanastaText("Round"),
             Text(team1.teamName),
             Text(team2.teamName),
           ]),
@@ -270,7 +273,7 @@ class _MainPageState extends State<MainPage>
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 5, 0, 20),
-          child: MyButton(
+          child: CanastaButton(
             buttonText: "delete selected row",
             onPressed: selectedIndex == null
                 ? null

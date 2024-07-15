@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'global.dart';
 
-import 'team_container.dart';
-
-class MyButton extends StatelessWidget {
-  const MyButton(
+class CanastaButton extends StatelessWidget {
+  const CanastaButton(
       {super.key, required this.buttonText, required this.onPressed});
 
   final void Function()? onPressed;

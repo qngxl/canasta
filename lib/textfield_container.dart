@@ -1,8 +1,7 @@
 // import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
 
 import 'package:flutter/material.dart';
-
-import 'team_container.dart';
+import 'global.dart';
 
 class TextfieldContainer extends StatelessWidget {
   const TextfieldContainer(

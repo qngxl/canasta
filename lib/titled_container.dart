@@ -1,5 +1,5 @@
-import 'package:canasta/team_container.dart';
 import 'package:flutter/material.dart';
+import 'global.dart';
 
 //copied from stack overflow
 

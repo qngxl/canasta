@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'checkbox_container.dart';
 import 'textfield_container.dart';
 import 'titled_container.dart';
+import 'global.dart';
 
 class TeamContainer extends StatefulWidget {
   const TeamContainer({super.key, required this.team});
@@ -14,11 +15,6 @@ class TeamContainer extends StatefulWidget {
   @override
   State<TeamContainer> createState() => TeamContainerState();
 }
-
-var containerHeight = 45.0;
-var preferedColor = Color.fromARGB(255, 109, 102, 209);
-var preferedTextColor = Color.fromARGB(255, 255, 255, 255);
-var insets = const EdgeInsets.fromLTRB(10, 10, 20, 10);
 
 class TeamContainerState extends State<TeamContainer> {
   var controller = TextEditingController();
