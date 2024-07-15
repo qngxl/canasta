@@ -29,7 +29,7 @@ class TeamContainerState extends State<TeamContainer> {
     controller.text = widget.team.canastaPoints.toString();
     return TitledContainer(
       titleText:
-          "${widget.team.teamName} : current: ${widget.team.getCurrentRoundPoints()}  |  total: ${widget.team.getTotalRoundPoints()}",
+          "${widget.team.teamName} : ${widget.team.getCurrentRoundPoints()}  |  total: ${widget.team.getTotalRoundPoints()}",
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

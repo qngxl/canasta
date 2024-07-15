@@ -33,19 +33,21 @@ class TextfieldContainer extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 14),
               child: TextField(
                   style: TextStyle(color: preferedTextColor),
                   controller: controller,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    filled: true,
+                    filled: false,
                     fillColor: preferedColor,
                     //labelText: "Canasta Points",
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: preferedColor),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15))),
+
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent)),
                   ),
                   onChanged: callback),
             ),
