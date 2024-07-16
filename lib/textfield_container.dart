@@ -19,7 +19,7 @@ class TextfieldContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: containerHeight,
-      margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+      margin: const EdgeInsets.fromLTRB(10, 20, 10, 5),
       decoration: BoxDecoration(
           color: preferedColor,
           // border: Border.all(),
@@ -32,7 +32,7 @@ class TextfieldContainer extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 14),
+              padding: const EdgeInsets.fromLTRB(15, 0, 0, 14),
               child: TextField(
                   style: TextStyle(color: preferedTextColor),
                   controller: controller,
