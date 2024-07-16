@@ -31,9 +31,7 @@ class TeamContainerState extends State<TeamContainer> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const SizedBox(height: 5),
-          Padding(
-              padding: const EdgeInsets.all(0),
-              child: TextfieldContainer(
+           TextfieldContainer(
                 textfieldText: "Canasta points: ",
                 controller: controller,
                 callback: (value) {
@@ -46,7 +44,7 @@ class TeamContainerState extends State<TeamContainer> {
                     }
                   });
                 },
-              )),
+              ),
           Container(
             height: containerHeight,
             margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
@@ -102,16 +100,19 @@ class TeamContainerState extends State<TeamContainer> {
               });
             },
           ),
-          CheckboxContainer(
-            checkboxText: "51/52 cards?                       ",
-            checkboxValue: widget.team.dealingBonus,
-            callback: (value) {
-              setState(() {
-                if (value != null) {
-                  widget.team.dealingBonus = value;
-                }
-              });
-            },
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
+            child: CheckboxContainer(
+              checkboxText: "51/52 cards?                       ",
+              checkboxValue: widget.team.dealingBonus,
+              callback: (value) {
+                setState(() {
+                  if (value != null) {
+                    widget.team.dealingBonus = value;
+                  }
+                });
+              },
+            ),
           )
         ],
       ),
