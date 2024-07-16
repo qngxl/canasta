@@ -1,6 +1,7 @@
 // import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
 
 import 'package:flutter/material.dart';
+import 'canasta_text.dart';
 import 'global.dart';
 
 class CheckboxContainer extends StatelessWidget {
@@ -28,8 +29,10 @@ class CheckboxContainer extends StatelessWidget {
         children: [
           Padding(
             padding: insets,
-            child: Text(checkboxText,
-                style: TextStyle(fontSize: 16, color: preferedTextColor)),
+            child: CanastaText(
+              checkboxText,
+              textAlign: TextAlign.left,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(7, 10, 10, 10),

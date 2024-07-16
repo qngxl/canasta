@@ -3,6 +3,7 @@
 import 'package:canasta/team.dart';
 import 'package:flutter/material.dart';
 
+import 'canasta_text.dart';
 import 'checkbox_container.dart';
 import 'textfield_container.dart';
 import 'titled_container.dart';
@@ -57,10 +58,7 @@ class TeamContainerState extends State<TeamContainer> {
               children: [
                 Padding(
                   padding: insets,
-                  child: Text(
-                    "amount of red 3's:",
-                    style: TextStyle(fontSize: 16, color: preferedTextColor),
-                  ),
+                  child: CanastaText("amount of red 3's:"),
                 ),
                 DropdownButtonHideUnderline(
                   child: DropdownButton(
@@ -68,42 +66,14 @@ class TeamContainerState extends State<TeamContainer> {
                     iconSize: 24,
                     borderRadius: BorderRadius.circular(10),
                     dropdownColor: preferedColor,
-                    items: [
-                      DropdownMenuItem(
-                          value: "0",
-                          child: Text("0",
-                              style: TextStyle(
-                                  fontSize: 16, color: preferedTextColor))),
-                      DropdownMenuItem(
-                          value: "1",
-                          child: Text("1",
-                              style: TextStyle(
-                                  fontSize: 16, color: preferedTextColor))),
-                      DropdownMenuItem(
-                          value: "2",
-                          child: Text("2",
-                              style: TextStyle(
-                                  fontSize: 16, color: preferedTextColor))),
-                      DropdownMenuItem(
-                          value: "3",
-                          child: Text("3",
-                              style: TextStyle(
-                                  fontSize: 16, color: preferedTextColor))),
-                      DropdownMenuItem(
-                          value: "4",
-                          child: Text("4",
-                              style: TextStyle(
-                                  fontSize: 16, color: preferedTextColor))),
-                      DropdownMenuItem(
-                          value: "5",
-                          child: Text("5",
-                              style: TextStyle(
-                                  fontSize: 16, color: preferedTextColor))),
-                      DropdownMenuItem(
-                          value: "6",
-                          child: Text("6",
-                              style: TextStyle(
-                                  fontSize: 16, color: preferedTextColor))),
+                    items: const [
+                      DropdownMenuItem(value: "0", child: CanastaText("0")),
+                      DropdownMenuItem(value: "1", child: CanastaText("1")),
+                      DropdownMenuItem(value: "2", child: CanastaText("2")),
+                      DropdownMenuItem(value: "3", child: CanastaText("3")),
+                      DropdownMenuItem(value: "4", child: CanastaText("4")),
+                      DropdownMenuItem(value: "5", child: CanastaText("5")),
+                      DropdownMenuItem(value: "6", child: CanastaText("6")),
                     ],
                     onChanged: (value) {
                       setState(() {

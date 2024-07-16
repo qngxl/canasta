@@ -5,20 +5,23 @@ class CanastaText extends StatelessWidget {
   const CanastaText(this.text,
       {super.key,
       this.background = const Color.fromARGB(255, 109, 102, 209),
-      this.size = 16});
+      this.size = 16,
+      this.textAlign = TextAlign.center});
 
   final String text;
   final Color background;
   final double size;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: TextAlign.center,
       style: TextStyle(
           fontSize: size,
           color: preferedTextColor,
-          backgroundColor: background),
+          backgroundColor: Colors.transparent),
     );
   }
 }

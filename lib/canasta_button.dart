@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'canasta_text.dart';
 import 'global.dart';
 
 class CanastaButton extends StatelessWidget {
@@ -15,10 +16,7 @@ class CanastaButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: preferedColor,
       ),
-      child: Text(
-        buttonText,
-        style: TextStyle(color: preferedTextColor),
-      ),
+      child: CanastaText(buttonText),
     );
   }
 }

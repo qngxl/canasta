@@ -118,11 +118,13 @@ class _MainPageState extends State<MainPage>
             child: Scaffold(
               backgroundColor: Colors.transparent,
               appBar: AppBar(
-                backgroundColor: preferedColor,
-                foregroundColor: preferedTextColor,
-                centerTitle: true,
-                title: const Text("Canasta Calculator"),
-              ),
+                  backgroundColor: preferedColor,
+                  foregroundColor: preferedTextColor,
+                  centerTitle: true,
+                  title: const CanastaText(
+                    "Canasta Calculator",
+                    size: 22,
+                  )),
               endDrawer: Align(
                 alignment: Alignment.topRight,
                 child: Container(
@@ -227,14 +229,14 @@ class _MainPageState extends State<MainPage>
           ),
           children: [
             const CanastaText("Round"),
-            Text(team1.teamName),
-            Text(team2.teamName),
+            CanastaText(team1.teamName),
+            CanastaText(team2.teamName),
           ]),
     );
     for (var i = 0; i < team1.roundPoints.length; i++) {
       rows.add(TableRow(
           decoration: BoxDecoration(
-              color: selectedIndex == i ? preferedColor : Colors.transparent),
+              color: selectedIndex == i ? preferedColor : preferedColor),
           children: [
             GestureDetector(
                 onTap: () {
@@ -242,10 +244,10 @@ class _MainPageState extends State<MainPage>
                     selectedIndex = i;
                   });
                 },
-                child: Text("${i + 1}")),
-            Text(
+                child: CanastaText("${i + 1}")),
+            CanastaText(
                 '${showAcumulatedRoundResults ? team1.getAccumulatedRoundPoints(i) : team1.getNotAcumulatedRoundPoints(i)}'),
-            Text(
+            CanastaText(
                 "${showAcumulatedRoundResults ? team2.getAccumulatedRoundPoints(i) : team2.getNotAcumulatedRoundPoints(i)}"),
           ]));
     }
