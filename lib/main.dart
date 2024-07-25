@@ -1,4 +1,5 @@
 import 'package:canasta/canasta_button.dart';
+import 'package:canasta/rounds_chart.dart';
 import 'package:canasta/team.dart';
 import 'package:canasta/team_container.dart';
 import 'package:flutter/material.dart';
@@ -309,6 +310,10 @@ class _MainPageState extends State<MainPage>
             });
           },
         ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0), // ToDo: adjust padding to personal preference
+          child: RoundsChart(team1: team1, team2: team2),
+        )
       ]),
     );
   }
