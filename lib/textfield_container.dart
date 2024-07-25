@@ -20,10 +20,10 @@ class TextfieldContainer extends StatelessWidget {
     return Container(
       height: containerHeight,
       margin: const EdgeInsets.fromLTRB(10, 19, 10, 5),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: preferedColor,
           // border: Border.all(),
-          borderRadius: const BorderRadius.all(Radius.circular(15))),
+          borderRadius: BorderRadius.all(Radius.circular(15))),
       child: Row(
         children: [
           Padding(
@@ -34,18 +34,18 @@ class TextfieldContainer extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(15, 0, 0, 14),
               child: TextField(
-                  style: TextStyle(color: preferedTextColor),
+                  style: const TextStyle(color: preferedTextColor),
                   controller: controller,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     filled: false,
                     fillColor: preferedColor,
                     //labelText: "Canasta Points",
 
-                    enabledBorder: const UnderlineInputBorder(
+                    enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.transparent),
                     ),
-                    focusedBorder: const UnderlineInputBorder(
+                    focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.transparent)),
                   ),
                   onChanged: callback),

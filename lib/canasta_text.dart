@@ -4,7 +4,7 @@ import 'global.dart';
 class CanastaText extends StatelessWidget {
   const CanastaText(this.text,
       {super.key,
-      this.background = const Color.fromARGB(255, 109, 102, 209),
+      this.background = preferedColor,
       this.size = 16,
       this.textAlign = TextAlign.center});
 

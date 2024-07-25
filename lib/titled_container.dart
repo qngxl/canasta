@@ -19,13 +19,13 @@ class TitledContainer extends StatelessWidget {
         Container(
           margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
           padding: EdgeInsets.all(insets),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               border: Border(
                   bottom: BorderSide(color: preferedColor, width: 2),
                   left: BorderSide(color: preferedColor, width: 2),
                   right: BorderSide(color: preferedColor, width: 2),
                   top: BorderSide(color: preferedColor, width: 2)),
-              borderRadius: const BorderRadius.all(Radius.circular(10))),
+              borderRadius: BorderRadius.all(Radius.circular(10))),
           child: child,
         ),
         Positioned(
@@ -37,9 +37,9 @@ class TitledContainer extends StatelessWidget {
             child: Container(
               // width: 500,
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: preferedColor,
-                  borderRadius: const BorderRadius.only(
+                  borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
                       topRight: Radius.circular(10))),
               child: CanastaText(
