@@ -224,9 +224,10 @@ class _MainPageState extends State<MainPage>
     rows.add(
       TableRow(
           decoration: BoxDecoration(
-            color: preferedColor,
-            border: Border.all(width: 3, color: preferedColor),
-          ),
+              border: Border.all(
+                  color: Colors.white, width: 3), // ToDo: grey better?
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10), topRight: Radius.circular(10))),
           children: [
             const CanastaText("Round"),
             CanastaText(team1.teamName),
@@ -236,7 +237,10 @@ class _MainPageState extends State<MainPage>
     for (var i = 0; i < team1.roundPoints.length; i++) {
       rows.add(TableRow(
           decoration: BoxDecoration(
-              color: selectedIndex == i ? Colors.red : preferedColor),
+              color: selectedIndex == i
+                  ? Colors.red
+                  : Colors
+                      .transparent), // ToDo : when selecting last line borders are not round
           children: [
             GestureDetector(
                 onTap: () {
@@ -261,15 +265,22 @@ class _MainPageState extends State<MainPage>
         Container(
           color: Colors.transparent,
           padding: const EdgeInsets.all(20.0),
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = null;
-              });
-            },
-            child: Table(
-              border: TableBorder.all(color: Colors.black),
-              children: getRows(),
+          child: Container(
+            decoration: BoxDecoration(
+                color: preferedColor, borderRadius: BorderRadius.circular(10)),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  selectedIndex = null;
+                });
+              },
+              child: Table(
+                border: TableBorder.all(
+                  color: Colors.white, // ToDo: grey better?
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                ),
+                children: getRows(),
+              ),
             ),
           ),
         ),

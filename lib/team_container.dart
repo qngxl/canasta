@@ -31,20 +31,20 @@ class TeamContainerState extends State<TeamContainer> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const SizedBox(height: 5),
-           TextfieldContainer(
-                textfieldText: "Canasta points: ",
-                controller: controller,
-                callback: (value) {
-                  setState(() {
-                    int? help = int.tryParse(value);
-                    if (help != null) {
-                      widget.team.canastaPoints = help;
-                    } else {
-                      widget.team.canastaPoints = 0;
-                    }
-                  });
-                },
-              ),
+          TextfieldContainer(
+            textfieldText: "Canasta points: ",
+            controller: controller,
+            callback: (value) {
+              setState(() {
+                int? help = int.tryParse(value);
+                if (help != null) {
+                  widget.team.canastaPoints = help;
+                } else {
+                  widget.team.canastaPoints = 0;
+                }
+              });
+            },
+          ),
           Container(
             height: containerHeight,
             margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
@@ -56,7 +56,7 @@ class TeamContainerState extends State<TeamContainer> {
               children: [
                 Padding(
                   padding: insets,
-                  child: CanastaText("amount of red 3's:"),
+                  child: CanastaText("Amount of red 3's:"),
                 ),
                 DropdownButtonHideUnderline(
                   child: DropdownButton(
@@ -90,7 +90,7 @@ class TeamContainerState extends State<TeamContainer> {
             ),
           ),
           CheckboxContainer(
-            checkboxText: "closed the game?              ",
+            checkboxText: "Closed the game?",
             checkboxValue: widget.team.closingBonus,
             callback: (value) {
               setState(() {
@@ -103,7 +103,7 @@ class TeamContainerState extends State<TeamContainer> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
             child: CheckboxContainer(
-              checkboxText: "51/52 cards?                       ",
+              checkboxText: "51/52 cards?",
               checkboxValue: widget.team.dealingBonus,
               callback: (value) {
                 setState(() {

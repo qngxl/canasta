@@ -17,7 +17,7 @@ class CanastaText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      textAlign: TextAlign.center,
+      textAlign: textAlign,
       style: TextStyle(
           fontSize: size,
           color: preferedTextColor,

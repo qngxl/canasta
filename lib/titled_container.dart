@@ -24,8 +24,8 @@ class TitledContainer extends StatelessWidget {
                   bottom: BorderSide(color: preferedColor, width: 2),
                   left: BorderSide(color: preferedColor, width: 2),
                   right: BorderSide(color: preferedColor, width: 2),
-                  top: const BorderSide(color: Colors.transparent, width: 2)),
-              borderRadius: const BorderRadius.all(Radius.circular(0))),
+                  top: BorderSide(color: preferedColor, width: 2)),
+              borderRadius: const BorderRadius.all(Radius.circular(10))),
           child: child,
         ),
         Positioned(
@@ -35,7 +35,8 @@ class TitledContainer extends StatelessWidget {
           child: Align(
             // alignment: Alignment.center,
             child: Container(
-              width: 500,
+              // width: 500,
+              width: double.infinity,
               decoration: BoxDecoration(
                   color: preferedColor,
                   borderRadius: const BorderRadius.only(
