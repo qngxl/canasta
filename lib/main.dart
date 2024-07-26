@@ -200,8 +200,14 @@ class _MainPageState extends State<MainPage>
   SingleChildScrollView getCurrentRoundPage() {
     return SingleChildScrollView(
       child: Column(children: [
-        TeamContainer(team: team1),
-        TeamContainer(team: team2),
+        TeamContainer(
+          team: team1,
+          headlineColor: team1Color,
+        ),
+        TeamContainer(
+          team: team2,
+          headlineColor: team2Color,
+        ),
         CanastaButton(
           buttonText: "save round",
           onPressed: () {

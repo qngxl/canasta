@@ -10,8 +10,10 @@ import 'titled_container.dart';
 import 'global.dart';
 
 class TeamContainer extends StatefulWidget {
-  const TeamContainer({super.key, required this.team});
+  const TeamContainer(
+      {super.key, required this.team, this.headlineColor = preferedTextColor});
   final Team team;
+  final Color headlineColor;
 
   @override
   State<TeamContainer> createState() => TeamContainerState();
@@ -27,6 +29,8 @@ class TeamContainerState extends State<TeamContainer> {
     return TitledContainer(
       titleText:
           "${widget.team.teamName} : ${widget.team.getCurrentRoundPoints()}  |  total: ${widget.team.getTotalRoundPoints()}",
+      headlineColor: Colors
+          .white, // ToDo: how to set different color for teams seperately?????
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

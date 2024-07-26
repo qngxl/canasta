@@ -6,9 +6,14 @@ import 'global.dart';
 
 class TitledContainer extends StatelessWidget {
   const TitledContainer(
-      {required this.titleText, required this.child, this.insets = 8, Key? key})
+      {required this.titleText,
+      required this.headlineColor,
+      required this.child,
+      this.insets = 8,
+      Key? key})
       : super(key: key);
   final String titleText;
+  final Color headlineColor;
   final double insets;
   final Widget child;
 
@@ -35,18 +40,18 @@ class TitledContainer extends StatelessWidget {
           child: Align(
             // alignment: Alignment.center,
             child: Container(
-              // width: 500,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                  color: preferedColor,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10))),
-              child: CanastaText(
-                titleText,
-                size: 19,
-              ),
-            ),
+                // width: 500,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                    color: preferedColor,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10))),
+                child: CanastaText(
+                  titleText,
+                  color: headlineColor,
+                  size: 19,
+                )),
           ),
         ),
       ],
