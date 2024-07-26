@@ -1,3 +1,4 @@
+import 'package:canasta/global.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -14,7 +15,7 @@ class RoundsChart extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(
-          height: 12,
+          height: 15,
         ),
         AspectRatio(
           aspectRatio: 1.5,
@@ -26,7 +27,7 @@ class RoundsChart extends StatelessWidget {
                 minY: 0,
                 maxY: 40000,
                 minX: 0,
-                // maxX: 
+                // maxX:
                 lineTouchData: const LineTouchData(enabled: false),
                 clipData: const FlClipData.all(),
                 gridData: const FlGridData(
@@ -35,16 +36,18 @@ class RoundsChart extends StatelessWidget {
                 ),
                 borderData: FlBorderData(show: true),
                 lineBarsData: [
-                  roundLine(team1, Colors.pink),
-                  roundLine(team2, Colors.blue)
+                  roundLine(team1, team1Color),
+                  roundLine(team2, team2Color)
                 ],
                 titlesData: const FlTitlesData(
-                  show: true,
-                  topTitles: AxisTitles(sideTitles: SideTitles()),
-                  bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, interval: 1)),
-                  leftTitles: AxisTitles(sideTitles: SideTitles()),
-                  rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 38))
-                ),
+                    show: true,
+                    topTitles: AxisTitles(sideTitles: SideTitles()),
+                    bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(showTitles: true, interval: 1)),
+                    leftTitles: AxisTitles(sideTitles: SideTitles()),
+                    rightTitles: AxisTitles(
+                        sideTitles:
+                            SideTitles(showTitles: true, reservedSize: 38))),
               ),
             ),
           ),

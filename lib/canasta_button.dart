@@ -15,7 +15,9 @@ class CanastaButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           backgroundColor: preferedColor,
-          side: const BorderSide(width: 1.5, color: Colors.transparent)), // ToDo : no border / black border?
+          side: const BorderSide(
+              width: 1.5,
+              color: Colors.transparent)), // ToDo : no border / black border?
       child: CanastaText(buttonText),
     );
   }

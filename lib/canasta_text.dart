@@ -6,12 +6,14 @@ class CanastaText extends StatelessWidget {
       {super.key,
       this.background = preferedColor,
       this.size = 16,
-      this.textAlign = TextAlign.center});
+      this.textAlign = TextAlign.center,
+      this.color = preferedTextColor});
 
   final String text;
   final Color background;
   final double size;
   final TextAlign? textAlign;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +21,7 @@ class CanastaText extends StatelessWidget {
       text,
       textAlign: textAlign,
       style: TextStyle(
-          fontSize: size,
-          color: preferedTextColor,
-          backgroundColor: Colors.transparent),
+          fontSize: size, color: color, backgroundColor: Colors.transparent),
     );
   }
 }

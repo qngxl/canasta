@@ -226,8 +226,8 @@ class _MainPageState extends State<MainPage>
                   topLeft: Radius.circular(10), topRight: Radius.circular(10))),
           children: [
             const CanastaText("Round"),
-            CanastaText(team1.teamName),
-            CanastaText(team2.teamName),
+            CanastaText(team1.teamName, color: team1Color),
+            CanastaText(team2.teamName, color: team2Color),
           ]),
     );
     for (var i = 0; i < team1.roundPoints.length; i++) {
@@ -246,9 +246,11 @@ class _MainPageState extends State<MainPage>
                 },
                 child: CanastaText("${i + 1}")),
             CanastaText(
-                '${showAcumulatedRoundResults ? team1.getAccumulatedRoundPoints(i) : team1.getNotAcumulatedRoundPoints(i)}'),
+                '${showAcumulatedRoundResults ? team1.getAccumulatedRoundPoints(i) : team1.getNotAcumulatedRoundPoints(i)}',
+                color: team1Color),
             CanastaText(
-                "${showAcumulatedRoundResults ? team2.getAccumulatedRoundPoints(i) : team2.getNotAcumulatedRoundPoints(i)}"),
+                "${showAcumulatedRoundResults ? team2.getAccumulatedRoundPoints(i) : team2.getNotAcumulatedRoundPoints(i)}",
+                color: team2Color),
           ]));
     }
 
@@ -260,7 +262,8 @@ class _MainPageState extends State<MainPage>
       child: Column(children: [
         Container(
           color: Colors.transparent,
-          padding: const EdgeInsets.all(20.0),
+          padding:
+              const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 20),
           child: Container(
             decoration: BoxDecoration(
                 color: preferedColor, borderRadius: BorderRadius.circular(10)),
