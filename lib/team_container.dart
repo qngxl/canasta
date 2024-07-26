@@ -51,7 +51,7 @@ class TeamContainerState extends State<TeamContainer> {
             decoration: BoxDecoration(
                 color: preferedColor,
                 // border: Border.all(),
-                borderRadius: const BorderRadius.all(Radius.circular(15))),
+                borderRadius: const BorderRadius.all(Radius.circular(10))),
             child: Row(
               children: [
                 Padding(

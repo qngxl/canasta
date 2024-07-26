@@ -202,20 +202,15 @@ class _MainPageState extends State<MainPage>
       child: Column(children: [
         TeamContainer(team: team1),
         TeamContainer(team: team2),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CanastaButton(
-              buttonText: "save round",
-              onPressed: () {
-                setState(() {
-                  team1.saveCurrentRoundPoints();
-                  team2.saveCurrentRoundPoints();
-                });
-              },
-            ),
-          ],
-        ),
+        CanastaButton(
+          buttonText: "save round",
+          onPressed: () {
+            setState(() {
+              team1.saveCurrentRoundPoints();
+              team2.saveCurrentRoundPoints();
+            });
+          },
+        )
       ]),
     );
   }
@@ -226,7 +221,7 @@ class _MainPageState extends State<MainPage>
       TableRow(
           decoration: BoxDecoration(
               border: Border.all(
-                  color: Colors.white, width: 3), // ToDo: grey better?
+                  color: Colors.black, width: 2), // ToDo: grey better?
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10))),
           children: [
@@ -277,7 +272,7 @@ class _MainPageState extends State<MainPage>
               },
               child: Table(
                 border: TableBorder.all(
-                  color: Colors.white, // ToDo: grey better?
+                  color: Colors.black, // ToDo: grey better?
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                 ),
                 children: getRows(),
@@ -311,7 +306,8 @@ class _MainPageState extends State<MainPage>
           },
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0), // ToDo: adjust padding to personal preference
+          padding: const EdgeInsets.fromLTRB(
+              0, 0, 0, 0), // ToDo: adjust padding to personal preference
           child: RoundsChart(team1: team1, team2: team2),
         )
       ]),
