@@ -225,11 +225,9 @@ class _MainPageState extends State<MainPage>
     List<TableRow> rows = [];
     rows.add(
       TableRow(
-          decoration: BoxDecoration(
-              border: Border.all(
-                  color: Colors.black, width: 2), // ToDo: grey better?
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+          decoration: const BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(color: preferedTextColor, width: 2))),
           children: [
             const CanastaText("Round"),
             CanastaText(team1.teamName, color: team1Color),
@@ -272,7 +270,11 @@ class _MainPageState extends State<MainPage>
               const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 20),
           child: Container(
             decoration: BoxDecoration(
-                color: preferedColor, borderRadius: BorderRadius.circular(10)),
+              color: preferedColor, borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                  color: preferedTextColor,
+                  width: 2), // ToDo: border or no border?
+            ),
             child: GestureDetector(
               onTap: () {
                 setState(() {
@@ -281,8 +283,8 @@ class _MainPageState extends State<MainPage>
               },
               child: Table(
                 border: TableBorder.all(
-                  color: Colors.black, // ToDo: grey better?
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  color: preferedTextColor, // ToDo: grey better?
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
                 ),
                 children: getRows(),
               ),

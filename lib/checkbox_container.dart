@@ -21,10 +21,12 @@ class CheckboxContainer extends StatelessWidget {
     return Container(
       height: containerHeight,
       margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           color: preferedColor,
-          // border: Border.all(),
-          borderRadius: BorderRadius.all(Radius.circular(10))),
+          border: Border.all(
+              color: preferedTextColor,
+              width: 2), // ToDo: border or no border? if yes, black or white?
+          borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,14 +38,14 @@ class CheckboxContainer extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(7, 10, 10, 10),
+            padding: const EdgeInsets.fromLTRB(0, 10, 5, 10),
             child: Checkbox(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(2.0),
               ),
               side: WidgetStateBorderSide.resolveWith(
                 (states) =>
-                    const BorderSide(width: 1.5, color: preferedTextColor),
+                    const BorderSide(width: 2, color: preferedTextColor),
               ),
               //tileColor: preferedColor,
               value: checkboxValue,

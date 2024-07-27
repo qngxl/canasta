@@ -54,7 +54,10 @@ class TeamContainerState extends State<TeamContainer> {
             margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             decoration: BoxDecoration(
                 color: preferedColor,
-                // border: Border.all(),
+                border: Border.all(
+                    color: preferedTextColor,
+                    width:
+                        2), // ToDo: border or no border? if yes, black or white?
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
             child: Row(
               children: [
