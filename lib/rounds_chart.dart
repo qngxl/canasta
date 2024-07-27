@@ -19,8 +19,14 @@ class RoundsChart extends StatelessWidget {
         ),
         AspectRatio(
           aspectRatio: 1.5,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: preferedColor,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: preferedTextColor, width: 2),
+            ), //ToDo: with Container around chart or without?
             child: LineChart(
               duration: const Duration(milliseconds: 100),
               LineChartData(
@@ -41,13 +47,21 @@ class RoundsChart extends StatelessWidget {
                 ],
                 titlesData: const FlTitlesData(
                     show: true,
-                    topTitles: AxisTitles(sideTitles: SideTitles()),
+                    topTitles:
+                        AxisTitles(sideTitles: SideTitles(color: Colors.white)),
                     bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: true, interval: 1)),
-                    leftTitles: AxisTitles(sideTitles: SideTitles()),
+                        sideTitles: SideTitles(
+                            showTitles: true,
+                            interval: 1,
+                            color: Colors.white)),
+                    leftTitles:
+                        AxisTitles(sideTitles: SideTitles(color: Colors.white)),
                     rightTitles: AxisTitles(
-                        sideTitles:
-                            SideTitles(showTitles: true, reservedSize: 38))),
+                        sideTitles: SideTitles(
+                            showTitles: true,
+                            reservedSize: 38,
+                            color: Colors
+                                .white))), //ToDo: why is custom color for text not working?
               ),
             ),
           ),
