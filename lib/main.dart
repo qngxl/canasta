@@ -202,11 +202,13 @@ class _MainPageState extends State<MainPage>
       child: Column(children: [
         TeamContainer(
           team: team1,
-          headlineColor: team1Color,
+          // headlineColor: team1Color,
+          headlineColor: preferedTextColor, // ToDo: white color or team1Color?
         ),
         TeamContainer(
           team: team2,
-          headlineColor: team2Color,
+          // headlineColor: team2Color,
+          headlineColor: preferedTextColor, // ToDo: white color or team2Color?
         ),
         CanastaButton(
           buttonText: "save round",
@@ -230,8 +232,36 @@ class _MainPageState extends State<MainPage>
                   bottom: BorderSide(color: preferedTextColor, width: 2))),
           children: [
             const CanastaText("Round"),
-            CanastaText(team1.teamName, color: team1Color),
-            CanastaText(team2.teamName, color: team2Color),
+            // CanastaText(team1.teamName, color: team1Color),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CanastaText(team1.teamName, color: preferedTextColor),
+                Container(
+                  height: 15,
+                  width: 15,
+                  margin: const EdgeInsets.only(left: 10),
+                  decoration: BoxDecoration(
+                      color: team1Color,
+                      borderRadius: BorderRadius.circular(10)),
+                )
+              ],
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CanastaText(team2.teamName, color: preferedTextColor),
+                Container(
+                  height: 15,
+                  width: 15,
+                  margin: const EdgeInsets.only(left: 10),
+                  decoration: BoxDecoration(
+                      color: team2Color,
+                      borderRadius: BorderRadius.circular(10)),
+                )
+              ],
+            ),
           ]),
     );
     for (var i = 0; i < team1.roundPoints.length; i++) {
@@ -249,12 +279,20 @@ class _MainPageState extends State<MainPage>
                   });
                 },
                 child: CanastaText("${i + 1}")),
+            // CanastaText(
+            //     '${showAcumulatedRoundResults ? team1.getAccumulatedRoundPoints(i) : team1.getNotAcumulatedRoundPoints(i)}',
+            //     color: team1Color),
             CanastaText(
                 '${showAcumulatedRoundResults ? team1.getAccumulatedRoundPoints(i) : team1.getNotAcumulatedRoundPoints(i)}',
-                color: team1Color),
+                color: preferedTextColor),
+
+            // CanastaText(
+            //     "${showAcumulatedRoundResults ? team2.getAccumulatedRoundPoints(i) : team2.getNotAcumulatedRoundPoints(i)}",
+            //     color: team2Color),
             CanastaText(
                 "${showAcumulatedRoundResults ? team2.getAccumulatedRoundPoints(i) : team2.getNotAcumulatedRoundPoints(i)}",
-                color: team2Color),
+                color:
+                    preferedTextColor), // ToDo: preferedTextColor or team1Color/team2Color?
           ]));
     }
 
