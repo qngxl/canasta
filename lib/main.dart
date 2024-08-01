@@ -283,7 +283,7 @@ class _MainPageState extends State<MainPage>
               },
               child: Table(
                 border: TableBorder.all(
-                  color: preferedTextColor, // ToDo: grey better?
+                  color: preferedTextColor, // Done: grey better?
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                 ),
                 children: getRows(),
@@ -316,11 +316,7 @@ class _MainPageState extends State<MainPage>
             });
           },
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(
-              0, 0, 0, 0), // ToDo: adjust padding to personal preference
-          child: RoundsChart(team1: team1, team2: team2),
-        )
+        RoundsChart(team1: team1, team2: team2)
       ]),
     );
   }

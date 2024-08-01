@@ -1,3 +1,4 @@
+import 'package:canasta/canasta_text.dart';
 import 'package:canasta/global.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -20,7 +21,7 @@ class RoundsChart extends StatelessWidget {
         AspectRatio(
           aspectRatio: 1.5,
           child: Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(15),
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: preferedColor,
@@ -28,8 +29,9 @@ class RoundsChart extends StatelessWidget {
               border: Border.all(color: preferedTextColor, width: 2),
             ), //ToDo: with Container around chart or without?
             child: LineChart(
-              duration: const Duration(milliseconds: 100),
+              // duration: const Duration(milliseconds: 100),
               LineChartData(
+                backgroundColor: Colors.transparent,
                 minY: 0,
                 maxY: 40000,
                 minX: 0,
@@ -40,28 +42,49 @@ class RoundsChart extends StatelessWidget {
                   show: true,
                   drawVerticalLine: false,
                 ),
-                borderData: FlBorderData(show: true),
+                borderData: FlBorderData(
+                    show: true, border: Border.all(color: preferedTextColor)),
                 lineBarsData: [
                   roundLine(team1, team1Color),
                   roundLine(team2, team2Color)
                 ],
-                titlesData: const FlTitlesData(
+                titlesData: FlTitlesData(
                     show: true,
-                    topTitles:
-                        AxisTitles(sideTitles: SideTitles(color: Colors.white)),
+                    topTitles: AxisTitles(sideTitles: SideTitles(
+                      getTitlesWidget: (value, meta) {
+                        return SideTitleWidget(
+                            axisSide: AxisSide.top,
+                            child: CanastaText(value.toString()));
+                      },
+                    )),
                     bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
-                            showTitles: true,
-                            interval: 1,
-                            color: Colors.white)),
-                    leftTitles:
-                        AxisTitles(sideTitles: SideTitles(color: Colors.white)),
+                      showTitles: true,
+                      reservedSize: 25,
+                      interval: 1,
+                      getTitlesWidget: (value, meta) {
+                        return SideTitleWidget(
+                            axisSide: AxisSide.bottom,
+                            child: CanastaText(
+                              value.toStringAsFixed(0),
+                              size: 14,
+                            ));
+                      },
+                    )),
+                    leftTitles: const AxisTitles(sideTitles: SideTitles()),
                     rightTitles: AxisTitles(
                         sideTitles: SideTitles(
-                            showTitles: true,
-                            reservedSize: 38,
-                            color: Colors
-                                .white))), //ToDo: why is custom color for text not working?
+                      showTitles: true,
+                      reservedSize: 38,
+                      getTitlesWidget: (value, meta) {
+                        return SideTitleWidget(
+                            axisSide: AxisSide.right,
+                            child: CanastaText(
+                              "${(value / 1000).toStringAsFixed(0)}K",
+                              size: 14,
+                            ));
+                      },
+                    ))), //Done: why is custom color for text not working?
               ),
             ),
           ),

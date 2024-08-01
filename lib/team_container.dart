@@ -29,8 +29,8 @@ class TeamContainerState extends State<TeamContainer> {
     return TitledContainer(
       titleText:
           "${widget.team.teamName} : ${widget.team.getCurrentRoundPoints()}  |  total: ${widget.team.getTotalRoundPoints()}",
-      headlineColor: Colors
-          .white, // ToDo: how to set different color for teams seperately?????
+      headlineColor: widget
+          .headlineColor, // Done: how to set different color for teams seperately?????
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
