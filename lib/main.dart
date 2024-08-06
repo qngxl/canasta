@@ -267,10 +267,14 @@ class _MainPageState extends State<MainPage>
     for (var i = 0; i < team1.roundPoints.length; i++) {
       rows.add(TableRow(
           decoration: BoxDecoration(
-              color: selectedIndex == i
-                  ? Colors.red
-                  : Colors
-                      .transparent), // ToDo : when selecting last line borders are not round
+              color: selectedIndex == i ? Colors.red : Colors.transparent,
+              // border: Border.all(color: preferedTextColor, width: 1),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(
+                      i == (team1.roundPoints.length - 1) ? 10 : 0),
+                  bottomRight: Radius.circular(
+                      i == (team1.roundPoints.length - 1) ? 10 : 0))),
+          // ToDo : when selecting last line borders are not round
           children: [
             GestureDetector(
                 onTap: () {
