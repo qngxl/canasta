@@ -30,7 +30,10 @@ class TextfieldContainer extends StatelessWidget {
         children: [
           Padding(
             padding: insets,
-            child: CanastaText(textfieldText),
+            child: CanastaText(
+              textfieldText,
+              textAlign: TextAlign.left,
+            ),
           ),
           Expanded(
             child: Padding(
