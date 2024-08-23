@@ -63,7 +63,15 @@ class TeamContainerState extends State<TeamContainer> {
               children: [
                 Padding(
                   padding: rowInsets,
-                  child: CanastaText("Amount of red 3's:"),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(margin: EdgeInsets.only(right: 10),child: CanastaText("Amount of")),
+                      ClipRRect(borderRadius: BorderRadius.circular(2), child: Image.asset("assets/images/3-of-Hearts.jpg")),
+                      Container(margin: EdgeInsets.fromLTRB(5, 0, 5, 0),child: CanastaText("/")),
+                      ClipRRect(borderRadius: BorderRadius.circular(2), child: Image.asset("assets/images/3-of-Diamonds.jpg")),
+                      Container(margin: EdgeInsets.only(left: 5),child: CanastaText(":"))
+                    ],
+                  ),
                 ),
                 DropdownButtonHideUnderline(
                   child: DropdownButton(

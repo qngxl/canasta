@@ -32,6 +32,8 @@ flutter_launcher_icons:
 flutter:
   assets:
     - "assets/images/canasta_icon.jpg"
+    - "assets/images/3-of-Hearts.jpg"
+    - "assets/images/3-of-Diamonds.jpg"
   fonts:
     - family: Satoshi
       fonts: 
