@@ -1,5 +1,6 @@
 // import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'canasta_text.dart';
 import 'global.dart';
@@ -19,7 +20,7 @@ class TextfieldContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: containerHeight,
-      margin: const EdgeInsets.fromLTRB(10, 19, 10, 5),
+      margin: kIsWeb? const EdgeInsets.fromLTRB(10, 16, 10, 2) : const EdgeInsets.fromLTRB(10, 19, 10, 5),
       decoration: BoxDecoration(
           color: preferedColor,
           border: Border.all(
@@ -29,7 +30,7 @@ class TextfieldContainer extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: insets,
+            padding: rowInsets,
             child: CanastaText(
               textfieldText,
               textAlign: TextAlign.left,

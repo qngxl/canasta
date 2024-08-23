@@ -20,7 +20,7 @@ class CheckboxContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: containerHeight,
-      margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      margin: containerInsets,
       decoration: BoxDecoration(
           color: preferedColor,
           border: Border.all(
@@ -31,7 +31,7 @@ class CheckboxContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: insets,
+            padding: rowInsets,
             child: CanastaText(
               checkboxText,
               textAlign: TextAlign.left,

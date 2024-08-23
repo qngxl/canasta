@@ -30,6 +30,8 @@ flutter_launcher_icons:
     theme_color: "#hexcode" 
 
 flutter:
+  assets:
+    - "assets/images/canasta_icon.jpg"
   fonts:
     - family: Satoshi
       fonts: 

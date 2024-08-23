@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'canasta_text.dart';
 import 'global.dart';
@@ -22,7 +23,7 @@ class TitledContainer extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+          margin: kIsWeb? const EdgeInsets.fromLTRB(10, 20, 10, 2) : const EdgeInsets.fromLTRB(10, 20, 10, 10) ,
           padding: EdgeInsets.all(insets),
           decoration: const BoxDecoration(
               border: Border(

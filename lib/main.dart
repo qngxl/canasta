@@ -122,9 +122,21 @@ class _MainPageState extends State<MainPage>
                   backgroundColor: preferedColor,
                   foregroundColor: preferedTextColor,
                   centerTitle: true,
-                  title: const CanastaText(
-                    "Canasta Calculator",
-                    size: 22,
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image.asset(
+                            "assets/images/canasta_icon.jpg",
+                            height: 50,
+                            width: 50,
+                          )),
+                      const CanastaText(
+                        "Canasta Calculator",
+                        size: 22,
+                      ),
+                    ],
                   )),
               endDrawer: Align(
                 alignment: Alignment.topRight,

@@ -34,7 +34,7 @@ class TeamContainerState extends State<TeamContainer> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(height: 5),
+          // const SizedBox(height: 5),
           TextfieldContainer(
             textfieldText: "Canasta points: ",
             controller: controller,
@@ -51,7 +51,7 @@ class TeamContainerState extends State<TeamContainer> {
           ),
           Container(
             height: containerHeight,
-            margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            margin: containerInsets,
             decoration: BoxDecoration(
                 color: preferedColor,
                 border: Border.all(
@@ -62,7 +62,7 @@ class TeamContainerState extends State<TeamContainer> {
             child: Row(
               children: [
                 Padding(
-                  padding: insets,
+                  padding: rowInsets,
                   child: CanastaText("Amount of red 3's:"),
                 ),
                 DropdownButtonHideUnderline(
@@ -108,7 +108,7 @@ class TeamContainerState extends State<TeamContainer> {
             },
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: CheckboxContainer(
               checkboxText: "51/52 cards?",
               checkboxValue: widget.team.dealingBonus,
